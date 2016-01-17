@@ -1,11 +1,14 @@
 extends layout
 
 block content
-	h1 Bus Tracker
-		p Welcome to Upper Arlington Bus Tracking System
-	h2 Log In
-		p username
-		p password
-	h5 Enter
+	h1 Welcome to Upper Arlington Bus Tracking System
+	h2 Please Log In
 
-	h2 TESTING SPACE
+	form(name="input", action="html_form_action.asp", method="get")
+		| Username:
+		input(type="text", name="user")
+
+		| Password:
+		input(type="text", name="pswd")
+
+	input(type="submit", value="Log in")
