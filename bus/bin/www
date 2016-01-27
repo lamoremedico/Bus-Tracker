@@ -58,6 +58,8 @@ function onError(error) {
     throw error;
   }
 
+  console.log(error);
+
   var bind = typeof port === 'string'
     ? 'Pipe ' + port
     : 'Port ' + port;
