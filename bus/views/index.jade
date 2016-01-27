@@ -1,13 +1,14 @@
 extends layout
 
 block content
-	h1 Welcome to Upper Arlington Bus Tracking System
+	h1 Upper Arlington Bus Tracking System
 	h2 Please Log In
 
 	form(name="input", action="/login", method="post")
-		| Username:
+		div Username:
 		input(type="text", name="user")
 
-		| Password:
-		input(type="text", name="pswd")
+		div Password:
+		input(type="password", name="pswd")
+		div 
 		input(type="submit", value="Log in")
