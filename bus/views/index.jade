@@ -4,17 +4,10 @@ block content
 	h1 Welcome to Upper Arlington Bus Tracking System
 	h2 Please Log In
 
-	form(name="input", action="html_form_action.asp", method="get")
+	form(name="input", action="/login", method="post")
 		| Username:
 		input(type="text", name="user")
 
 		| Password:
 		input(type="text", name="pswd")
-
-	//input(type="submit", value="Log in")
-	button(onclick="move()") Log In
-script.
-	funtion move() {
-		window.location.href = '/newpage'
-		}
-	
+		input(type="submit", value="Log in")
