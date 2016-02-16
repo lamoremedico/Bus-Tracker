@@ -9,8 +9,13 @@ app.use(cookieParser())
  
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.post('/', function(req, res, next) {
+  if (req.cookies.remember) {
+  	res.render('anotherpage', {title: 'Welcome'});
+  	}
+  	else {
   res.render('index', { title: 'Log In' });
+      }
 });
 
 //app.get('/', function(req, res, next) {
@@ -36,8 +41,8 @@ router.post('/login', function(req, res, next) {
 });
 
 app.post('/login',function(req, res){
-     res.cookie( 'name', req.param.user)
-     	.send('Cookie is set');
+     res.cookie( 'name', req.param.('user'))
+     	.send(p 'Cookie is set');
 });
 
 router.get('/logout', function(req, res, next) {
