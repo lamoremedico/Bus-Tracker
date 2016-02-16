@@ -7,14 +7,15 @@ var app = express()
 
 app.use(cookieParser())
  
-app.get('/cookie',function(req, res){
-     res.cookie(cookie_name , 'cookie_value').send('Cookie is set');
-});
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Log In' });
 });
+
+//app.get('/', function(req, res, next) {
+//	res.send(req.cookies.name);
+//});
 
 router.get('/login', function(req, res, next) {
 	res.redirect('/');
@@ -32,6 +33,11 @@ router.post('/login', function(req, res, next) {
 	else {
 		res.redirect('/');
 	}
+});
+
+app.post('/login',function(req, res){
+     res.cookie( 'name', req.param.user)
+     	.send('Cookie is set');
 });
 
 router.get('/logout', function(req, res, next) {
