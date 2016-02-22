@@ -18,6 +18,10 @@ router.post('/', function(req, res, next) {
    //   }
 });
 
+router.get('/', function(req, res, next) {
+	res.render('index', { title: 'Log In' });
+});
+
 //app.get('/', function(req, res, next) {
 //	res.send(req.cookies.name);
 //});
@@ -31,8 +35,6 @@ router.post('/login', function(req, res, next) {
 	var pswd = req.param('pswd');
 	if (user === "namore" && pswd === "200192")  {
 		console.log("Username: " + user + "\nPassword: " + pswd);
-		//console.log(req);
-		//console.log(res);
 		res.render('anotherpage', { title: 'Welcome' });
 	}
 	else {
