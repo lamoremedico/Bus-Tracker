@@ -6,5 +6,18 @@ html
 	h1 Welcome to Upper Arlington Bus Tracking System
 	h2 Please select your bus
 
+	div Bus 1
+	form(name="bus1", action="/buserror", method="get")
+		input(type="submit", value="Bus 1")
+
+	div Bus 2
+	form(name="bus2", action="/buserror", method="get")
+		input(type="submit", value="Bus 2")
+
+	div Bus 3
+	form(name="bus3", action="/buserror", method="get")
+		input(type="submit", value="Bus 3")
+
+	div Log Out
 	form(name="logout", action="/logout", method="get")
 		input(type="submit", value="Log Out")

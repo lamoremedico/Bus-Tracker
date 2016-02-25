@@ -49,6 +49,11 @@ router.get('/logout', function(req, res, next) {
 	res.render('logout', { title: 'Log Out' });
 });
 
+//Bus's being configured
+router.get('/buserror', function(req, res, next) {
+	res.render('buserror', { title: 'Bus Maintenence' });
+});
+
 
 module.exports = router;
 
