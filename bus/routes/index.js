@@ -10,7 +10,8 @@ app.use(cookieParser())
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  if (req.cookies.remember) {
+  console.log("Current Cookie = " + req.cookies.name)
+  if (req.cookies.name != null) {
   	res.render('anotherpage', {title: 'Welcome'});
   	}
   	else {
@@ -20,7 +21,7 @@ router.get('/', function(req, res, next) {
 
 // GET Login page but if no cookies redirect to home page
 router.get('/login', function(req, res, next) {
-	if (req.cookies.remember) {
+	if (req.cookies.name != null) {
   	res.render('anotherpage', {title: 'Welcome'});
   }
   	else {
@@ -34,7 +35,7 @@ router.post('/login', function(req, res, next) {
 	var pswd = req.param('pswd');
 	if (user === "namore" && pswd === "200192")  {
 		console.log("Username: " + user + "\nPassword: " + pswd);
-		res.cookie( 'name', user)
+		res.cookie( 'name', user, { expires: new Date(Date.now() + 900000)})
 		console.log("Cookie = " + user);
 		res.render('anotherpage', { title: 'Welcome' });
 	}
@@ -44,6 +45,7 @@ router.post('/login', function(req, res, next) {
 });
 
 router.get('/logout', function(req, res, next) {
+	res.clearCookie('name')
 	res.render('logout', { title: 'Log Out' });
 });
 
