@@ -9,30 +9,34 @@ app.use(cookieParser())
  
 
 /* GET home page. */
-router.post('/', function(req, res, next) {
-  //if (req.cookies.remember) {
-  	//res.render('anotherpage', {title: 'Welcome'});
-  	//}
-  	//else {
+router.get('/', function(req, res, next) {
+  console.log("Current Cookie = " + req.cookies.name)
+  if (req.cookies.name != null) {
+  	res.render('anotherpage', {title: 'Welcome'});
+  	}
+  	else {
   res.render('index', { title: 'Log In' });
-   //   }
+     }
 });
 
-//app.get('/', function(req, res, next) {
-//	res.send(req.cookies.name);
-//});
-
+// GET Login page but if no cookies redirect to home page
 router.get('/login', function(req, res, next) {
+	if (req.cookies.name != null) {
+  	res.render('anotherpage', {title: 'Welcome'});
+  }
+  	else {
 	res.redirect('/');
+   }
 });
 
+//If login info is valid - send to next page
 router.post('/login', function(req, res, next) {
 	var user = req.param('user');
 	var pswd = req.param('pswd');
 	if (user === "namore" && pswd === "200192")  {
 		console.log("Username: " + user + "\nPassword: " + pswd);
-		//console.log(req);
-		//console.log(res);
+		res.cookie( 'name', user, { expires: new Date(Date.now() + 900000)})
+		console.log("Cookie = " + user);
 		res.render('anotherpage', { title: 'Welcome' });
 	}
 	else {
@@ -40,13 +44,14 @@ router.post('/login', function(req, res, next) {
 	}
 });
 
-//app.post('/login',function(req, res){
-     //res.cookie( 'name', req.param.user)
-     	//.send('Cookie is set');
-//});
-
 router.get('/logout', function(req, res, next) {
+	res.clearCookie('name')
 	res.render('logout', { title: 'Log Out' });
+});
+
+//Bus's being configured
+router.get('/buserror', function(req, res, next) {
+	res.render('buserror', { title: 'Bus Maintenence' });
 });
 
 
