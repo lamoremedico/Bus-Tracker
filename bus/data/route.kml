@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<kml xmlns='http://www.opengis.net/kml/2.2'>
+	<Document>
+		<name>Untitled layer</name>
+		<Placemark>
+			<name>Upper Arlington</name>
+			<styleUrl>#icon-503-DB4436-nodesc</styleUrl>
+			<Point>
+				<coordinates>-83.06240780000002,39.99450840000001,0.0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Point 2</name>
+			<styleUrl>#icon-503-DB4436-nodesc</styleUrl>
+			<Point>
+				<coordinates>-83.0702019,40.007911,0.0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Point 3</name>
+			<styleUrl>#icon-503-DB4436-nodesc</styleUrl>
+			<Point>
+				<coordinates>-83.0849648,40.0288303,0.0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Point 4</name>
+			<styleUrl>#icon-503-DB4436-nodesc</styleUrl>
+			<Point>
+				<coordinates>-83.0891275,40.0475586,0.0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Point 5</name>
+			<styleUrl>#icon-503-DB4436-nodesc</styleUrl>
+			<Point>
+				<coordinates>-83.0537224,40.0473286,0.0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Point 6</name>
+			<styleUrl>#icon-503-DB4436-nodesc</styleUrl>
+			<Point>
+				<coordinates>-83.0511475,40.0206474,0.0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Point 7</name>
+			<styleUrl>#icon-503-DB4436-nodesc</styleUrl>
+			<Point>
+				<coordinates>-83.0588722,39.9960599,0.0</coordinates>
+			</Point>
+		</Placemark>
+		<Style id='icon-503-DB4436-nodesc-normal'>
+			<IconStyle>
+				<color>ff3644DB</color>
+				<scale>1.1</scale>
+				<Icon>
+					<href>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+				</Icon>
+				<hotSpot x='16' y='31' xunits='pixels' yunits='insetPixels'>
+				</hotSpot>
+			</IconStyle>
+			<LabelStyle>
+				<scale>0.0</scale>
+			</LabelStyle>
+			<BalloonStyle>
+				<text><![CDATA[<h3>$[name]</h3>]]></text>
+			</BalloonStyle>
+		</Style>
+		<Style id='icon-503-DB4436-nodesc-highlight'>
+			<IconStyle>
+				<color>ff3644DB</color>
+				<scale>1.1</scale>
+				<Icon>
+					<href>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+				</Icon>
+				<hotSpot x='16' y='31' xunits='pixels' yunits='insetPixels'>
+				</hotSpot>
+			</IconStyle>
+			<LabelStyle>
+				<scale>1.1</scale>
+			</LabelStyle>
+			<BalloonStyle>
+				<text><![CDATA[<h3>$[name]</h3>]]></text>
+			</BalloonStyle>
+		</Style>
+		<StyleMap id='icon-503-DB4436-nodesc'>
+			<Pair>
+				<key>normal</key>
+				<styleUrl>#icon-503-DB4436-nodesc-normal</styleUrl>
+			</Pair>
+			<Pair>
+				<key>highlight</key>
+				<styleUrl>#icon-503-DB4436-nodesc-highlight</styleUrl>
+			</Pair>
+		</StyleMap>
+	</Document>
+</kml>

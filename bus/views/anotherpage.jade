@@ -5,16 +5,20 @@ html
 	body
 	h1 Welcome to Upper Arlington Bus Tracking System
 	h2 Please select your bus
+	script(type="text/javascript" src="/static/js/route_watch.js")
 
 	div Bus 1
+	div(id="bus_1_info")
 	form(name="bus1", action="/buserror", method="get")
 		input(type="submit", value="Bus 1")
 
 	div Bus 2
+	div(id="bus_2_info")
 	form(name="bus2", action="/buserror", method="get")
 		input(type="submit", value="Bus 2")
 
 	div Bus 3
+	div(id="bus_3_info")
 	form(name="bus3", action="/buserror", method="get")
 		input(type="submit", value="Bus 3")
 
