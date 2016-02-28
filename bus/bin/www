@@ -119,7 +119,7 @@ setInterval(function(){
 function handleRequest(request, response){
   response.setHeader('Access-Control-Allow-Origin','*');
   response.setHeader('Content-Type','application/json');
-  var text = JSON.stringify({point: points[index]});
+  var text = JSON.stringify(points[index]);
   response.end(text);
 }
 
