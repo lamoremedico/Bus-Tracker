@@ -34,6 +34,15 @@ function initMap(lat, lng) {
     position: myLatLng,
     title: 'Hello World!'
   });
+
+  /*Creates marker when clicked by user - can adjust to allow 
+    click if marker is on route and then show distance/time til point */ 
+  map.addListener('click', function(e) {
+  var marker = new google.maps.Marker({
+    position: {lat: e.latLng.lat(), lng: e.latLng.lng()},
+    map: map
+  });
+});
 }
 
 
