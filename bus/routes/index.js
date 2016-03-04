@@ -51,7 +51,27 @@ router.get('/logout', function(req, res, next) {
 
 //Bus's being configured
 router.get('/buserror', function(req, res, next) {
-	res.render('buserror', { title: 'Bus Maintenence' });
+	res.render('buserror', { title: 'Bus Maintenance' });
+});
+
+//To page tracking Bus #27
+router.get('/bus27', function(req, res, next) {
+
+//I understand I will eventually want to declare these var outside of 
+// this method but right now I just want it to work not sure what's 
+//happening currently
+var fs = require('fs'),
+	xml2js = require('xml2js');
+var parser = new xml2js.Parser();
+fs.readFile(__dirname + '/../data/Bus27route.kml.xml', function(err, data) {
+	parser.parseString(data, function(err, result) {
+		console.log(result);
+		console.log('Done');
+	});
+
+});
+
+	res.render('bus27', { title: 'Bus #27 Tracking' });
 });
 
 

@@ -35,7 +35,17 @@ function initMap(lat, lng) {
     title: 'Hello World!'
   });
 
-  /*Creates marker when clicked by user - can adjust to allow 
+  // A kml layer needs 2 things - a kml file and a set of options
+    // I selected a random kml file - but since I did not give a location for the 
+    // map in map options - the kml file better do this 
+    
+    var kmlUrl = 'https://www.google.com/maps/d/edit?mid=z6sSANoSrkWg.kSQOiF5m2sig';
+   //var kmlOptions = { map: map};
+
+    // Create the kmlLayer - and you are done
+    var kmlLayer = new google.maps.KmlLayer(kmlUrl, map);
+
+  /*Creates marker when clicked by user - NEED TO adjust to allow 
     click if marker is on route and then show distance/time til point */ 
   map.addListener('click', function(e) {
   var marker = new google.maps.Marker({

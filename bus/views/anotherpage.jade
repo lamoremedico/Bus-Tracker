@@ -8,18 +8,18 @@ html
 	script(type="text/javascript" src="/static/js/route_watch.js")
 	script(type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjW2YgX-WxEMqYo6oy66qml3z7L4d0OsI")
 
-	div Bus 1
+	div Bus #27
 	div(id="bus_1_info")
 	div(id="bus_1_map" style="height: 400px; width: 500px;")
-	form(name="bus1", action="/buserror", method="get")
-		input(type="submit", value="Bus 1")
+	form(name="bus27", action="/bus27", method="get")
+		input(type="submit", value="Greensview Elementary Bus 27")
 
-	div Bus 2
+	div Bus #2
 	div(id="bus_2_info")
 	form(name="bus2", action="/buserror", method="get")
 		input(type="submit", value="Bus 2")
 
-	div Bus 3
+	div Bus #3
 	div(id="bus_3_info")
 	form(name="bus3", action="/buserror", method="get")
 		input(type="submit", value="Bus 3")
