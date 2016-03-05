@@ -28,6 +28,10 @@ function initMap(lat, lng) {
     zoom: 5
   });
 
+  //add traffic layer to map
+  var trafficLayer = new google.maps.TrafficLayer();
+  trafficLayer.setMap(map);
+
   // Create a marker and set its position.
   var marker = new google.maps.Marker({
     map: map,
