@@ -39,15 +39,20 @@ function initMap(lat, lng) {
     title: 'Hello World!'
   });
 
+var bus27Route = new google.maps.KmlLayer({
+    url: 'https://sites.google.com/site/kmlroute/home/kml',
+    map: map
+  });
+
   // A kml layer needs 2 things - a kml file and a set of options
     // I selected a random kml file - but since I did not give a location for the
     // map in map options - the kml file better do this
 
-    var kmlUrl = 'https://www.google.com/maps/d/edit?mid=z6sSANoSrkWg.kSQOiF5m2sig';
+    //var kmlUrl = 'https://www.google.com/maps/d/edit?mid=z6sSANoSrkWg.kSQOiF5m2sig';
    //var kmlOptions = { map: map};
 
     // Create the kmlLayer - and you are done
-    var kmlLayer = new google.maps.KmlLayer(kmlUrl, map);
+   // var kmlLayer = new google.maps.KmlLayer(kmlUrl, map);
 
   /*Creates marker when clicked by user - NEED TO adjust to allow
     click if marker is on route and then show distance/time til point */
