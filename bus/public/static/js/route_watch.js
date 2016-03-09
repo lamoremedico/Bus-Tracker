@@ -40,9 +40,21 @@ function initMap(lat, lng) {
   });
 
 var bus27Route = new google.maps.KmlLayer({
-    url: 'https://sites.google.com/site/kmlroute/home/kml',
-    map: map
+    url: 'https://sites.google.com/site/kmlroute/home/kml/Bus%2022%20Route.kml.xml?attredirects=0&d=1',
+    ap: map
   });
+
+//Intended to show description of point to side - does not work
+//Need to alter "featureData.description" to include est time of arrival and such
+  bus27Route.addListener('click', function(kmlEvent) {
+    var text = kmlEvent.featureData.description;
+    showInContentWindow(text);
+  });
+
+  function showInContentWindow(text) {
+    var sidediv = document.getElementById('content-window');
+    sidediv.innerHTML = text;
+  }
 
   // A kml layer needs 2 things - a kml file and a set of options
     // I selected a random kml file - but since I did not give a location for the
