@@ -24,6 +24,11 @@ html
 	form(name="bus3", action="/buserror", method="get")
 		input(type="submit", value="Bus 3")
 
+	div If you are a Bus Driver, please click here:
+	div(id="bus_driver_info")
+	form(name="driver", action="/driver", method="get")
+		input(type="submit", value="Bus Driver")
+
 	div Log Out
 	form(name="logout", action="/logout", method="get")
 		input(type="submit", value="Log Out")

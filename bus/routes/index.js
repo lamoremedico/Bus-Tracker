@@ -54,6 +54,16 @@ router.get('/buserror', function(req, res, next) {
 	res.render('buserror', { title: 'Bus Maintenance' });
 });
 
+//To page for bus driver to send in location
+router.get('/driver', function(req, res) {
+	if (req.cookies.name != null) {
+  	res.render('busdriver', {title: 'Sending Bus Location'});
+  }
+  	else {
+	res.redirect('/');
+   }
+});
+
 //To page tracking Bus #27
 router.get('/bus27', function(req, res, next) {
 
