@@ -67,10 +67,9 @@ router.get('/driver', function(req, res) {
 //To page tracking Bus #27
 router.get('/bus27', function(req, res, next) {
 
-//I understand I will eventually want to declare these var outside of 
-// this method but right now I just want it to work not sure what's 
-//happening currently
-var fs = require('fs'),
+//Initially going to be the parser for the kml file
+
+/*var fs = require('fs'),
 	xml2js = require('xml2js');
 var parser = new xml2js.Parser();
 fs.readFile(__dirname + '/../data/Bus27route.kml.xml', function(err, data) {
@@ -80,9 +79,10 @@ fs.readFile(__dirname + '/../data/Bus27route.kml.xml', function(err, data) {
 	});
 
 });
-
+*/
 	res.render('bus27', { title: 'Bus #27 Tracking' });
 });
+
 
 
 module.exports = router;
