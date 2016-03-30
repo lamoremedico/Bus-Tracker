@@ -11,7 +11,7 @@ function startUpdater(){
       var lat = point[1];
       var lon = point[0];
 
-      document.getElementById('bus_1_info').innerHTML = 'lat: ' + lat + ' - lon: ' + lon;
+      document.getElementById('bus_27_info').innerHTML = 'lat: ' + lat + ' - lon: ' + lon;
 
       initMap(lat, lon)
     },10)
@@ -22,7 +22,7 @@ function initMap(lat, lng) {
   var myLatLng = {lat: lat, lng: lng};
 
   // Create a map object and specify the DOM element for display.
-  var map = new google.maps.Map(document.getElementById('bus_1_map'), {
+  var map = new google.maps.Map(document.getElementById('bus_27_map'), {
     center: myLatLng,
     scrollwheel: false,
     zoom: 12
@@ -41,7 +41,7 @@ function initMap(lat, lng) {
 
 var bus27Route = new google.maps.KmlLayer({
     url: 'https://sites.google.com/site/kmlroute/home/kml/Bus%2022%20Route.kml.xml?attredirects=0&d=1',
-    ap: map
+    map: map
   });
 
 //Intended to show description of point to side - does not work
