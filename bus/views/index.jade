@@ -1,15 +1,42 @@
-extends layout
+doctype html
+html
+	head
+		title= title
 
-block content
-	h1 Upper Arlington Bus Tracking System
-	h2 Please Log In
+		style.
+			body {
+				padding: 50px 100px;
+				font-family: Verdana;
+				font-size: 13px;
+				background: #f6f66b
+			}
+			#form {
+				margin: -210px 0px 0px 0px;
+			}
+			#footer {
+				padding: 55px 0px;
+			}
+			#logo {
+				margin: -30px 0px 20px 350px;
+			}
+	body
+		h1 Upper Arlington Bus Tracking System
+		h2 Please Log In
+		#logo
+			img(src='/images/UA_Logo.png')
+	#form
+		form(name="input", action="/login", method="post")
+			div Username:
+			input(type="text", name="user")
 
-	form(name="input", action="/login", method="post")
-		div Username:
-		input(type="text", name="user")
-
-		div Password:
-		input(type="password", name="pswd")
+			div Password:
+			input(type="password", name="pswd")
 		
-		div 
-		input(type="submit", value="Log in")
+			div 
+			input(type="submit", value="Log in")
+
+	#footer
+		div Copyright © Upper Arlington City Schools #{+new Date().getFullYear()}
+		a(href='/page?name=about') About 
+		| | 
+		a(href='/page?name=contact') Contact Us

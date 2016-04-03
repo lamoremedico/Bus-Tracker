@@ -46,7 +46,7 @@ router.post('/login', function(req, res, next) {
 
 router.get('/logout', function(req, res, next) {
 	res.clearCookie('name')
-	res.render('logout', { title: 'Log Out' });
+	res.render('index', { title: 'Log In' });
 });
 
 //Bus's being configured
