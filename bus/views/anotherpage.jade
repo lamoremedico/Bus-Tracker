@@ -8,21 +8,78 @@ html
 				padding: 25px 50px;
 				font-family: Verdana;
 				font-size: 13px;
-				background: #f6f66b /* #FFFF00 brighter yellow */
+				background: #f6f66b 		/* #FFFF00 brighter yellow */
+			}
+			#logo {
+				width: 760px;
+				border: 10px ridge black;
+			}
+			#options {
+				font-family: Verdana;
+				font-size: 16px;
+				border: 5px solid black;
+				border-radius: 20px;
+				margin: 20px 20px 20px 0px;
+				background: #dfdfdf;
+			}
+			#bheader {
+				margin: 20px 0px 0px 20px;
+			}
+			#bus27button {
+				margin: -20px 0px 20px 100px;
+			}
+			#busdriverbutton {
+				margin: -20px 0px 20px 360px;
+			}
+			#feedbackbutton {
+				margin: -20px 0px 20px 520px;
+			}
+			#logoutbutton {
+				margin: -20px 0px 20px 95px;
+			}
+			#footer {
+				padding: 10px 0px;
 			}
 	body
-	h1 Welcome to Upper Arlington Bus Tracking System
-	h2 Please select your bus
+	#logo
+		img(src='/images/UAheader.gif')
+	h2 Welcome, #{user} Please Select Your Bus
 
-	div Bus #27
-	form(name="bus27", action="/bus27", method="get")
-		input(type="submit", value="Greensview Elementary Bus 27")
+	#options 
+		#bheader
+			| Bus #27:
+		#bus27button
+			form(name="bus27", action="/bus27", method="get")
+				input(type="submit", value="Greensview Elementary Bus 27")
 
 
-	div If you are a Bus Driver, please click here:
-	form(name="driver", action="/driver", method="get")
-		input(type="submit", value="Bus Driver")
+	#options 
+		#bheader
+			| If you are a Bus Driver, please click here:	
+		#busdriverbutton
+			form(name="driver", action="/driver", method="get")
+				input(type="submit", value="Bus Driver")
 
-	div Log Out
-	form(name="logout", action="/logout", method="get")
-		input(type="submit", value="Log Out")
+	#options 
+		#bheader
+			| Please All Users Leave Feedback About This Application Here:	
+		#feedbackbutton
+			form(name="feedback", action="/feedback", method="get")
+				input(type="submit", value="Feedback")
+
+	#options 
+		#bheader
+			| Log Out:	
+		#logoutbutton
+			form(name="logout", action="/logout", method="get")
+				input(type="submit", value="Log Out")
+	
+	#footer
+		div Copyright © UAHS Senior Capstone Project #{+new Date().getFullYear()}
+		a(href='/about') About 
+		| | 
+		a(href='/contactus') Contact Us 
+		| | 
+		a(href='/login') Home 
+		| | 
+		a(href='/logout') Log Out

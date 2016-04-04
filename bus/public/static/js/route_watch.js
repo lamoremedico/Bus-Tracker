@@ -18,6 +18,14 @@ function startUpdater(){
   },10000)
 }
 
+function getETA(point){
+
+}
+
+function paintBus(){
+  
+}
+
 function initMap(lat, lng) {
   var myLatLng = {lat: lat, lng: lng};
 

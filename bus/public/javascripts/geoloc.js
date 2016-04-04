@@ -32,7 +32,7 @@ function geoFindMe() {
   };
 
   function error() {
-    output.innerHTML = "Unable to retrieve your location";
+    output.innerHTML = "ERROR RETRIEVING LOCATION";
   };
 
   output.innerHTML = "<p>Locating…</p>";

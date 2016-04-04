@@ -10,6 +10,9 @@ html
 				font-size: 13px;
 				background: #f6f66b /* #FFFF00 brighter yellow */
 			}
+			#footer {
+				padding: 25px 0px;
+			}
 	body
 	h2 Bus Tracking for Greensview Elementary Bus #27
 	script(type="text/javascript" src="/static/js/route_watch.js")
@@ -17,4 +20,15 @@ html
 
 	div(id="bus_27_info")
 	div(id="bus_27_map" style="height: 400px; width: 500px;")
+
+
+	#footer
+		div Copyright © UAHS Senior Capstone Project #{+new Date().getFullYear()}
+		a(href='/about') About 
+		| | 
+		a(href='/contactus') Contact Us 
+		| | 
+		a(href='/login') Home 
+		| | 
+		a(href='/logout') Log Out
 	

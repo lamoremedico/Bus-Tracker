@@ -10,10 +10,27 @@ html
 				font-size: 13px;
 				background: #f6f66b /* #FFFF00 brighter yellow */
 			}
+			#footer {
+				padding: 25px 0px;
+			}
 	body
-		h2 For Greensview Elementary Bus #27 Driver
-		script(type= "text/javascript" src='/javascripts/geoloc.js')
-		button(type="button", onclick='geoFindMe()') Track Me
-		div#out
-		//put function within button that prompts to start geolocating the device using it (function geoFindMe has things in terms of HTML need to make it JADE OUTPUT)
+	h2 For Greensview Elementary Bus #27 Driver
+	
+	script(type= "text/javascript" src='/javascripts/geoloc.js')
+	
+	button(type="button", onclick='geoFindMe()') Track Me
+	#out
+		/*put function within button that prompts to start geolocating the device using it (function geoFindMe has things in terms of HTML need to make it JADE OUTPUT) */
+
+
+	#footer
+		div Copyright © UAHS Senior Capstone Project #{+new Date().getFullYear()}
+		a(href='/about') About 
+		| | 
+		a(href='/contactus') Contact Us 
+		| | 
+		a(href='/login') Home 
+		| | 
+		a(href='/logout') Log Out
+
 		
