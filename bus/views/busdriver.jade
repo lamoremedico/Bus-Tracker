@@ -19,6 +19,12 @@ html
 	script(type= "text/javascript" src='/javascripts/geoloc.js')
 	
 	button(type="button", onclick='geoFindMe()') Track Me
+	
+	script(type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjW2YgX-WxEMqYo6oy66qml3z7L4d0OsI")
+
+	div(id="bus_27_info")
+	div(id="bus_27_map" style="height: 400px; width: 500px;")
+	
 	#out
 		/*put function within button that prompts to start geolocating the device using it (function geoFindMe has things in terms of HTML need to make it JADE OUTPUT) */
 
