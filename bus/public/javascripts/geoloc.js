@@ -44,7 +44,14 @@ function geoFindMe() {
     output.innerHTML = "ERROR RETRIEVING LOCATION";
   };
 
+  var geo_options = {
+  enableHighAccuracy: true, 
+  maximumAge        : 30000, 
+  timeout           : 27000
+};
+
   output.innerHTML = "<p>Locating…</p>";
 
   navigator.geolocation.getCurrentPosition(success, error);
+  //var geoId = navigator.geolocation.watchPosition(success, error, geo_options);
 }
