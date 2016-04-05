@@ -18,7 +18,7 @@ html
 	
 	script(type= "text/javascript" src='/javascripts/geoloc.js')
 	
-	button(type="button", onclick='geoFindMe()') Track Me
+	button(type="button", onclick='clearTimeout(timerId)') Stop Tracking Me
 	
 	script(type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjW2YgX-WxEMqYo6oy66qml3z7L4d0OsI")
 
@@ -33,7 +33,7 @@ html
 		div Copyright © UAHS Senior Capstone Project #{+new Date().getFullYear()}
 		a(href='/about') About 
 		| | 
-		a(href='/contactus') Contact Us 
+		a(href='/feedback') Contact Us 
 		| | 
 		a(href='/login') Home 
 		| | 

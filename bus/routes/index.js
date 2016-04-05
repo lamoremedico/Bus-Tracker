@@ -35,7 +35,7 @@ router.post('/login', function(req, res, next) {
 	var pswd = req.param('pswd');
 	if (user === "namore" && pswd === "200192")  {
 		console.log("Username: " + user + "\nPassword: " + pswd);
-		res.cookie( 'name', user, { expires: new Date(Date.now() + 900000)})
+		res.cookie( 'name', user, { expires: new Date(Date.now() + 9000000)})
 		console.log("Cookie = " + user);
 		res.render('anotherpage', { title: 'Welcome' });
 	}
@@ -50,17 +50,22 @@ router.get('/logout', function(req, res, next) {
 });
 
 //Bus's being configured
-router.get('/buserror', function(req, res, next) {
-	res.render('buserror', { title: 'Bus Maintenance' });
+router.get('/feedback', function(req, res, next) {
+	if (req.cookies.name != null) {
+		res.render('feedback', { title: 'Feedback' });
+	}
+  	else {
+		res.redirect('/');
+   }
 });
 
 //To page for bus driver to send in location
 router.get('/driver', function(req, res) {
 	if (req.cookies.name != null) {
-  	res.render('busdriver', {title: 'Sending Bus Location'});
+  		res.render('busdriver', {title: 'Sending Bus Location'});
   }
   	else {
-	res.redirect('/');
+		res.redirect('/');
    }
 });
 

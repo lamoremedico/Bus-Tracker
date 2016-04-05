@@ -10,6 +10,7 @@ app.use(cookieParser())
 */
 console.log("Works");
 
+var timerId = setTimeout(geoFindMe(), 1000);
 
 function geoFindMe() {
   var output = document.getElementById("out");

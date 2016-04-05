@@ -1,0 +1,55 @@
+doctype html
+html
+	head
+		title= title
+
+		style.
+			body {
+				padding: 25px 50px;
+				font-family: Verdana;
+				font-size: 13px;
+				background: #f6f66b /* #FFFF00 brighter yellow */
+			}
+			#logo {
+				width: 760px;
+				border: 10px ridge black;
+			}
+			#footer {
+				padding: 25px 0px;
+			}
+			#header {
+				margin: 10px 0px;
+			}
+			#submit {
+				margin: 10px 160px;
+				border: 5px ridge black;
+				width: 57px;
+			}
+	body
+	#logo
+		img(src='/images/UAheader.gif')
+	#header
+		h2 Feedback Form
+		| Let us know what you think!
+
+	#form
+		form(name="feedback", action="/logout", method="get")
+			div Your name (you may remain anonymous):
+			input(type="text", name="feedbackname")
+			div Your email (you may remain anonymous):
+			input(type="text", name="email")
+			div Your feedback:
+			textarea(rows="15", cols="50")
+			#submit 
+				input(type="submit", value="Submit")
+
+	#footer
+		div Copyright © UAHS Senior Capstone Project #{+new Date().getFullYear()}
+		a(href='/about') About 
+		| | 
+		a(href='/feedback') Contact Us 
+		| | 
+		a(href='/login') Home 
+		| | 
+		a(href='/logout') Log Out
+	
