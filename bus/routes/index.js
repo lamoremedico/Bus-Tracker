@@ -70,7 +70,7 @@ router.get('/driver', function(req, res) {
 });
 
 //To page tracking Bus #27
-router.get('/bus27', function(req, res, next) {
+router.get('/bus22', function(req, res, next) {
 
 //Initially going to be the parser for the kml file
 
@@ -85,7 +85,7 @@ fs.readFile(__dirname + '/../data/Bus27route.kml.xml', function(err, data) {
 
 });
 */
-	res.render('bus27', { title: 'Bus #27 Tracking' });
+	res.render('bus22', { title: 'Bus #22 Tracking' });
 });
 
 

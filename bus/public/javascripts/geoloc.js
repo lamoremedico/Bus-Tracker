@@ -27,6 +27,7 @@ function geoFindMe() {
     var longitude = position.coords.longitude;
     var myLatLng = {lat: latitude, lng: longitude};
 
+    output.innerHTML = '<p>You are successfully being tracked</p>';
     output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
 
 
