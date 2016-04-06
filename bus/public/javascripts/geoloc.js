@@ -31,7 +31,7 @@ function geoFindMe() {
     output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
 
 
-    var map = new google.maps.Map(document.getElementById('bus_27_map'), {
+    var map = new google.maps.Map(document.getElementById('bus_22_map'), {
     center: myLatLng,
     scrollwheel: false,
     zoom: 12
