@@ -10,10 +10,12 @@ app.use(cookieParser())
 */
 console.log("Works");
 
-var timerId = setTimeout(geoFindMe(), 1000);
+//var timerId = setInterval(geoFindMe, 15000);
+
 
 function geoFindMe() {
   var output = document.getElementById("out");
+  console.log("hello");
 
   if (!navigator.geolocation){
     output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
@@ -34,13 +36,20 @@ function geoFindMe() {
     zoom: 12
   });
 
+    var marker = new google.maps.Marker({
+    map: map,
+    position: myLatLng,
+    title: 'Bus Driver Location'
+  });
+
     //var img = new Image();
     //img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
 
     //output.appendChild(img);
   };
 
-  function error() {
+  function error(err) {
+    console.log(err);
     output.innerHTML = "ERROR RETRIEVING LOCATION";
   };
 
@@ -52,6 +61,8 @@ function geoFindMe() {
 
   output.innerHTML = "<p>Locating…</p>";
 
-  navigator.geolocation.getCurrentPosition(success, error);
-  //var geoId = navigator.geolocation.watchPosition(success, error, geo_options);
+  //navigator.geolocation.getCurrentPosition(success, error);
+  var geoId = navigator.geolocation.watchPosition(success, error, geo_options);
 }
+
+geoFindMe();
