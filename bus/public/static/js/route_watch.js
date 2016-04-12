@@ -1,7 +1,7 @@
 function startUpdater(){
   setInterval(function(){
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "http://127.0.0.1:3001/info", true);
+    xhttp.open("GET", "http://" + window.location.hostname + ":3001/info", true);
     xhttp.send();
 
     setTimeout(function(){
@@ -23,7 +23,7 @@ function getETA(point){
 }
 
 function paintBus(){
-  
+
 }
 
 function initMap(lat, lng) {
