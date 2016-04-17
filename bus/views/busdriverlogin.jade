@@ -1,0 +1,44 @@
+doctype html
+html
+	head
+		title= title
+
+		style.
+			body {
+				border: 5px ridge black;
+				padding: 50px 100px;
+				font-family: Verdana;
+				font-size: 13px;
+				background: #f6f66b
+			}
+			#form {
+				margin: -210px 0px 0px 0px;
+			}
+			#footer {
+				padding: 55px 0px;
+			}
+			#logo {
+				margin: -30px 0px 20px 350px;
+			}
+	body
+		h1 Bus Driver Verification
+		h2 Please Log In
+		#logo
+			img(src='/images/UA_Logo.png')
+	#form
+		form(name="input", action="/driver", method="post")
+			div Bus Key Code:
+			input(type="password", name="bus_key")
+		
+			div 
+			input(type="submit", value="Log in")
+
+	#footer
+		div Copyright © UAHS Senior Capstone Project #{+new Date().getFullYear()}
+		a(href='/about') About 
+		| | 
+		a(href='/feedback') Contact Us 
+		| | 
+		a(href='/login') Home 
+		| | 
+		a(href='/logout') Log Out

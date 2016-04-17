@@ -9,8 +9,8 @@ var app = express()
 app.use(cookieParser())
 */
 console.log("Works");
-
-//var timerId = setInterval(geoFindMe, 15000);
+geoFindMe();
+var timerId = setInterval(geoFindMe, 5000);
 
 
 function geoFindMe() {
@@ -27,8 +27,7 @@ function geoFindMe() {
     var longitude = position.coords.longitude;
     var myLatLng = {lat: latitude, lng: longitude};
 
-    output.innerHTML = '<p>You are successfully being tracked</p>';
-    output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
+    output.innerHTML = '<p>You are successfully being tracked! Your location will continue to update every 5 seconds.<br> Current Latitude: ' + latitude + '° <br>Current Longitude: ' + longitude + '°</p>';
 
 
     var map = new google.maps.Map(document.getElementById('bus_22_map'), {
@@ -42,6 +41,11 @@ function geoFindMe() {
     position: myLatLng,
     title: 'Bus Driver Location'
   });
+  var infowindow = new google.maps.InfoWindow({
+  content:"The Bus Driver is here!"
+  });
+
+infowindow.open(map,marker);
 
     //var img = new Image();
     //img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
@@ -62,8 +66,8 @@ function geoFindMe() {
 
   output.innerHTML = "<p>Locating…</p>";
 
-  //navigator.geolocation.getCurrentPosition(success, error);
-  var geoId = navigator.geolocation.watchPosition(success, error, geo_options);
+  navigator.geolocation.getCurrentPosition(success, error);
+  //var geoId = navigator.geolocation.watchPosition(success, error, geo_options);
 }
 
-geoFindMe();
+//geoFindMe();

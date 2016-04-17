@@ -60,9 +60,9 @@ router.get('/feedback', function(req, res, next) {
 });
 
 //To page for bus driver to send in location
-router.get('/driver', function(req, res) {
+router.get('/driverlogin', function(req, res) {
 	if (req.cookies.name != null) {
-  		res.render('busdriver', {title: 'Sending Bus Location'});
+  		res.render('busdriverlogin', {title: 'Bus Driver Login'});
   }
   	else {
 		res.redirect('/');
@@ -86,6 +86,17 @@ fs.readFile(__dirname + '/../data/Bus27route.kml.xml', function(err, data) {
 });
 */
 	res.render('bus22', { title: 'Bus #22 Tracking' });
+});
+
+router.post('/driver', function(req, res, next) {
+	var key = req.param('bus_key');
+	if (key === "2222")  {
+		console.log("Bus Key: " + key);
+		res.cookie( 'name', key, { expires: new Date(Date.now() + 9000000)})
+		console.log("Cookie = " + key);
+		res.render('busdriver', {title: 'Sending Bus Location'});
+	}
+	
 });
 
 
