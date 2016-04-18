@@ -1,13 +1,6 @@
 //Geo Location for busdriver page
-/*var express = require('express');
-var router = express.Router();
 
-var cookieParser = require('cookie-parser')
- 
-var app = express()
 
-app.use(cookieParser())
-*/
 console.log("Works");
 geoFindMe();
 var timerId = setInterval(geoFindMe, 5000);
@@ -33,19 +26,20 @@ function geoFindMe() {
     var map = new google.maps.Map(document.getElementById('bus_22_map'), {
     center: myLatLng,
     scrollwheel: false,
-    zoom: 12
+    zoom: 14
   });
 
-    var marker = new google.maps.Marker({
-    map: map,
-    position: myLatLng,
-    title: 'Bus Driver Location'
+
+    var busmarker = new google.maps.Marker({
+    position: myLatLng
   });
+    busmarker.setMap(map);
+
   var infowindow = new google.maps.InfoWindow({
   content:"The Bus Driver is here!"
   });
 
-infowindow.open(map,marker);
+infowindow.open(map,busmarker);
 
     //var img = new Image();
     //img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
