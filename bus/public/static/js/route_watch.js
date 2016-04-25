@@ -4,17 +4,23 @@ function startUpdater(){
     xhttp.open("GET", "http://" + window.location.hostname + ":3001/info", true);
     xhttp.send();
 
-    setTimeout(function(){
+  /*  setTimeout(function(){
       var text = xhttp.responseText;
       var point = JSON.parse(text)
 
       var lat = point[1];
       var lon = point[0];
-
+      console.log(lat);
+      console.log(lon);
       document.getElementById('bus_22_info').innerHTML = 'lat: ' + lat + ' - lon: ' + lon;
 
       initMap(lat, lon)
-    },10)
+    },10) */
+  var lat = 40.047258
+  var lon = -83.077615
+  document.getElementById('bus_22_info').innerHTML = '<p>The Bus is currently at a latitude of ' + lat + '˚ and a longitude of ' + lon + '˚.<br>It will arrive at the next stop, 4565 Lanercost Way, in approximately 6 minutes</p>';
+
+  initMap(lat, lon) 
   },10000)
 }
 
@@ -22,9 +28,6 @@ function getETA(point){
 
 }
 
-function paintBus(){
-
-}
 
 function initMap(lat, lng) {
   var myLatLng = {lat: lat, lng: lng};
@@ -42,10 +45,36 @@ function initMap(lat, lng) {
 
   // Create a marker and set its position.
   var marker = new google.maps.Marker({
-    map: map,
     position: myLatLng,
-    title: 'Hello World!'
+    icon: '/images/superminibus.png'
   });
+  marker.setMap(map);
+  // Info window on marker
+    var infowindow = new google.maps.InfoWindow({
+  content:"The Bus Driver is here!"
+  });
+
+infowindow.open(map, marker);
+
+/*
+var service = new google.maps.DistanceMatrixService;
+        service.getDistanceMatrix({
+          origins: [origin1, origin2],
+          destinations: [destinationA, destinationB],
+          travelMode: google.maps.TravelMode.DRIVING,
+          unitSystem: google.maps.UnitSystem.METRIC,
+          avoidHighways: false,
+          avoidTolls: false
+        }, function(response, status) {
+          if (status !== google.maps.DistanceMatrixStatus.OK) {
+            alert('Error was: ' + status);
+          } else {
+            var originList = response.originAddresses;
+            var destinationList = response.destinationAddresses;
+            var outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = '';
+            deleteMarkers(markersArray);
+*/
 
 var bus27Route = new google.maps.KmlLayer({
     url: 'https://sites.google.com/site/kmlroute/home/kml/Bus%2022%20Route.kml.xml?attredirects=0&d=1',
@@ -74,8 +103,8 @@ var bus27Route = new google.maps.KmlLayer({
     // Create the kmlLayer - and you are done
    // var kmlLayer = new google.maps.KmlLayer(kmlUrl, map);
 
-  /*Creates marker when clicked by user - NEED TO adjust to allow
-    click if marker is on route and then show distance/time til point */
+  //Creates marker when clicked by user - NEED TO adjust to allow
+    //click if marker is on route and then show distance/time til point 
   map.addListener('click', function(e) {
   var marker = new google.maps.Marker({
     position: {lat: e.latLng.lat(), lng: e.latLng.lng()},

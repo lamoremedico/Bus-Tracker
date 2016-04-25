@@ -1,9 +1,21 @@
 //Geo Location for busdriver page
 
-
-console.log("Works");
+var timerId = "";
+console.log("GEOLOC Running");
 geoFindMe();
-var timerId = setInterval(geoFindMe, 5000);
+startLocating();
+
+function startLocating() {
+  timerId = setInterval(geoFindMe, 5000);
+  console.log("Beginning Loop!")
+}
+
+function stopLocating() {
+  clearTimeout(timerId);
+  var output = document.getElementById("out");
+  output.innerHTML = "<p>Tracking stopped. To resume please click below</p>"
+
+}
 
 
 function geoFindMe() {
@@ -31,7 +43,8 @@ function geoFindMe() {
 
 
     var busmarker = new google.maps.Marker({
-    position: myLatLng
+    position: myLatLng,
+    icon: '/images/superminibus.png'
   });
     busmarker.setMap(map);
 

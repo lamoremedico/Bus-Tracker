@@ -20,9 +20,9 @@ router.get('/', function(req, res, next) {
 });
 
 // GET Login page but if no cookies redirect to home page
-router.get('/login', function(req, res, next) {
+router.get('/home', function(req, res, next) {
 	if (req.cookies.name != null) {
-  	res.render('anotherpage', {title: 'Welcome'});
+  	res.render('anotherpage', {title: 'UA Bus Tracker Home'});
   }
   	else {
 	res.redirect('/');
@@ -30,14 +30,14 @@ router.get('/login', function(req, res, next) {
 });
 
 //If login info is valid - send to next page
-router.post('/login', function(req, res, next) {
+router.post('/home', function(req, res, next) {
 	var user = req.param('user');
 	var pswd = req.param('pswd');
 	if (user === "namore" && pswd === "200192")  {
 		console.log("Username: " + user + "\nPassword: " + pswd);
 		res.cookie( 'name', user, { expires: new Date(Date.now() + 9000000)})
 		console.log("Cookie = " + user);
-		res.render('anotherpage', { title: 'Welcome' });
+		res.render('anotherpage', { title: 'UA Bus Tracker Home' });
 	}
 	else {
 		res.redirect('/');
@@ -86,6 +86,7 @@ fs.readFile(__dirname + '/../data/Bus27route.kml.xml', function(err, data) {
 });
 */
 	res.render('bus22', { title: 'Bus #22 Tracking' });
+	//doesntwork  res.sendFile('/views/googlemap.html');
 });
 
 router.post('/driver', function(req, res, next) {
