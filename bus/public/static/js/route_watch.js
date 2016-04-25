@@ -18,8 +18,8 @@ function startUpdater(){
     },10) */
   var lat = 40.047258
   var lon = -83.077615
-  document.getElementById('bus_22_info').innerHTML = '<p>The Bus is currently at a latitude of ' + lat + '˚ and a longitude of ' + lon + '˚.<br>It will arrive at the next stop, 4565 Lanercost Way, in approximately 6 minutes</p>';
-
+  document.getElementById('bus_22_info').innerHTML = '<p>The Bus is currently at a latitude of ' + lat + '˚ and a longitude of ' + lon + '˚.<br>It will arrive at the next stop, 2415 Sandover Rd, in approximately 3 minutes</p>';
+  //This is currently a placeholder ^ for variables that will later display any needed address
   initMap(lat, lon) 
   },10000)
 }

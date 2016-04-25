@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-
+//TESTING THE MAP AND SIMULATING BUS MOVEMENTS
 var app = require('../app');
 var debug = require('debug')('bus:server');
 var http = require('http');
