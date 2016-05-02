@@ -69,6 +69,10 @@ router.get('/driverlogin', function(req, res) {
    }
 });
 
+router.get('/googlemap', function(req, res) {
+	res.render('googlemap', {title: 'Google Map Default'})
+});
+
 //To page tracking Bus #27
 router.get('/bus22', function(req, res, next) {
 
