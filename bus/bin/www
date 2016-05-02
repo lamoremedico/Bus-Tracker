@@ -93,41 +93,41 @@ function onListening() {
 
 
 
-//run simulator
-var SIMULATOR_PORT = 3001;
-
-var index = 0;
-var points = [
-  [-83.06240780000002,39.99450840000001],
-  [-83.0702019,40.007911],
-  [-83.0849648,40.0288303],
-  [-83.0891275,40.0475586],
-  [-83.0537224,40.0473286],
-  [-83.0511475,40.0206474],
-  [-83.0588722,39.9960599]
-];
-
-setInterval(function(){
-  if (index === points.length) {
-    index = 0;
-  }
-  else {
-    index++;
-  }
-},5000)
-
-function handleRequest(request, response){
-  response.setHeader('Access-Control-Allow-Origin','*');
-  response.setHeader('Content-Type','application/json');
-  var text = JSON.stringify(points[index]);
-  response.end(text);
-}
-
-
-var server = http.createServer(handleRequest);
-
-//Lets start our server
-server.listen(SIMULATOR_PORT, function(){
-    //Callback triggered when server is successfully listening. Hurray!
-    console.log("Bus position simulator listening on: http://localhost:%s", SIMULATOR_PORT);
-});
+// //run simulator
+// var SIMULATOR_PORT = 3001;
+//
+// var index = 0;
+// var points = [
+//   [-83.06240780000002,39.99450840000001],
+//   [-83.0702019,40.007911],
+//   [-83.0849648,40.0288303],
+//   [-83.0891275,40.0475586],
+//   [-83.0537224,40.0473286],
+//   [-83.0511475,40.0206474],
+//   [-83.0588722,39.9960599]
+// ];
+//
+// setInterval(function(){
+//   if (index === points.length) {
+//     index = 0;
+//   }
+//   else {
+//     index++;
+//   }
+// },5000)
+//
+// function handleRequest(request, response){
+//   response.setHeader('Access-Control-Allow-Origin','*');
+//   response.setHeader('Content-Type','application/json');
+//   var text = JSON.stringify(points[index]);
+//   response.end(text);
+// }
+//
+//
+// var server = http.createServer(handleRequest);
+//
+// //Lets start our server
+// server.listen(SIMULATOR_PORT, function(){
+//     //Callback triggered when server is successfully listening. Hurray!
+//     console.log("Bus position simulator listening on: http://localhost:%s", SIMULATOR_PORT);
+// });

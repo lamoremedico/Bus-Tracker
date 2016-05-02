@@ -2,11 +2,11 @@ var express = require('express');
 var router = express.Router();
 
 var cookieParser = require('cookie-parser')
- 
+
 var app = express()
 
 app.use(cookieParser())
- 
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -97,11 +97,11 @@ router.post('/driver', function(req, res, next) {
 		console.log("Cookie = " + key);
 		res.render('busdriver', {title: 'Sending Bus Location'});
 	}
-	
 });
 
+router.post('/driver/save_position',function(req, res, next){
+  console.log(req)
+})
 
 
 module.exports = router;
-
-

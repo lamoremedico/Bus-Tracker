@@ -1,6 +1,7 @@
 //Geo Location for busdriver page
 
 var timerId = "";
+var output;
 console.log("GEOLOC Running");
 geoFindMe();
 startLocating();
@@ -18,6 +19,45 @@ function stopLocating() {
 }
 
 
+
+function success(position) {
+  var latitude  = position.coords.latitude;
+  var longitude = position.coords.longitude;
+  var myLatLng = {lat: latitude, lng: longitude};
+
+  sendCoordinates(latitude,longitude)
+
+  output.innerHTML = '<p>You are successfully being tracked! Your location will continue to update every 5 seconds.<br> Current Latitude: ' + latitude + '° <br>Current Longitude: ' + longitude + '°</p>';
+
+  var map = new google.maps.Map(document.getElementById('bus_22_map'), {
+    center: myLatLng,
+    scrollwheel: false,
+    zoom: 14
+  });
+
+  var busmarker = new google.maps.Marker({
+    position: myLatLng,
+    icon: '/images/superminibus.png'
+  });
+  busmarker.setMap(map);
+
+  var infowindow = new google.maps.InfoWindow({
+    content:"The Bus Driver is here!"
+  });
+
+  infowindow.open(map,busmarker);
+
+  //var img = new Image();
+  //img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
+
+  //output.appendChild(img);
+};
+
+function error(err) {
+  console.log(err);
+  output.innerHTML = "ERROR RETRIEVING LOCATION";
+};
+
 function geoFindMe() {
   var output = document.getElementById("out");
   console.log("hello");
@@ -27,49 +67,12 @@ function geoFindMe() {
     return;
   }
 
-  function success(position) {
-    var latitude  = position.coords.latitude;
-    var longitude = position.coords.longitude;
-    var myLatLng = {lat: latitude, lng: longitude};
-
-    output.innerHTML = '<p>You are successfully being tracked! Your location will continue to update every 5 seconds.<br> Current Latitude: ' + latitude + '° <br>Current Longitude: ' + longitude + '°</p>';
-
-
-    var map = new google.maps.Map(document.getElementById('bus_22_map'), {
-    center: myLatLng,
-    scrollwheel: false,
-    zoom: 14
-  });
-
-
-    var busmarker = new google.maps.Marker({
-    position: myLatLng,
-    icon: '/images/superminibus.png'
-  });
-    busmarker.setMap(map);
-
-  var infowindow = new google.maps.InfoWindow({
-  content:"The Bus Driver is here!"
-  });
-
-infowindow.open(map,busmarker);
-
-    //var img = new Image();
-    //img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
-
-    //output.appendChild(img);
-  };
-
-  function error(err) {
-    console.log(err);
-    output.innerHTML = "ERROR RETRIEVING LOCATION";
-  };
 
   var geo_options = {
-  enableHighAccuracy: true, 
-  maximumAge        : 30000, 
-  timeout           : 27000
-};
+    enableHighAccuracy: true,
+    maximumAge        : 30000,
+    timeout           : 27000
+  };
 
   output.innerHTML = "<p>Locating…</p>";
 
@@ -78,3 +81,11 @@ infowindow.open(map,busmarker);
 }
 
 //geoFindMe();
+
+
+function sendCoordinates(lat, lon){
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("POST", "http://" + window.location.hostname + "/driver/save_position", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send('lat=' + lat + '&lon=' + lon);
+}
