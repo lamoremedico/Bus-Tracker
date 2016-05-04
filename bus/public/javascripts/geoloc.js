@@ -1,7 +1,7 @@
 //Geo Location for busdriver page
 
 var timerId = "";
-var output;
+var topoutput = document.getElementById("out");
 console.log("GEOLOC Running");
 geoFindMe();
 startLocating();
@@ -13,8 +13,7 @@ function startLocating() {
 
 function stopLocating() {
   clearTimeout(timerId);
-  var output = document.getElementById("out");
-  output.innerHTML = "<p>Tracking stopped. To resume please click below</p>"
+  topoutput.innerHTML = "<p>Tracking stopped. To resume please click below</p>"
 
 }
 
@@ -27,7 +26,7 @@ function success(position) {
 
   sendCoordinates(latitude,longitude)
 
-  output.innerHTML = '<p>You are successfully being tracked! Your location will continue to update every 5 seconds.<br> Current Latitude: ' + latitude + '° <br>Current Longitude: ' + longitude + '°</p>';
+  topoutput.innerHTML = '<p>You are successfully being tracked! Your location will continue to update every 5 seconds.<br> Current Latitude: ' + latitude + '° <br>Current Longitude: ' + longitude + '°</p>';
 
   var map = new google.maps.Map(document.getElementById('bus_22_map'), {
     center: myLatLng,
@@ -59,11 +58,11 @@ function error(err) {
 };
 
 function geoFindMe() {
-  var output = document.getElementById("out");
+  topoutput = document.getElementById("out");
   console.log("hello");
 
   if (!navigator.geolocation){
-    output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+    topoutput.innerHTML = "<p>Geolocation is not supported by your browser</p>";
     return;
   }
 
@@ -74,7 +73,7 @@ function geoFindMe() {
     timeout           : 27000
   };
 
-  output.innerHTML = "<p>Locating…</p>";
+  topoutput.innerHTML = "<p>Locating…</p>";
 
   navigator.geolocation.getCurrentPosition(success, error);
   //var geoId = navigator.geolocation.watchPosition(success, error, geo_options);
