@@ -29,14 +29,15 @@ html
 		img(src='/images/UAheader.gif')
 	h2 Bus Tracking for Greensview Elementary Bus #22
 	
-	script(type="text/javascript" src="/static/js/route_watch.js")
-
-	script(type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbQEPjRXr1nxQe30RLBwikC2bw0YwzHqM")
-
+	
 	div(id="bus_22_map" style="height: 400px; width: 500px;")
+	
 	h3 Bus Current Location and ETA:
 	div(id="bus_22_info")
 
+	script(type="text/javascript" src="/static/js/route_watch.js")
+
+	script(type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbQEPjRXr1nxQe30RLBwikC2bw0YwzHqM")
 
 	#footer
 		div Copyright © UAHS Senior Capstone Project #{+new Date().getFullYear()}

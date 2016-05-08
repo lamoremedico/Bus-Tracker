@@ -4,13 +4,16 @@ function startUpdater(){
     xhttp.open("GET", window.location.origin + "/get_bus22_position", true);
     xhttp.send();
 
+
+
     setTimeout(function(){
       var text = xhttp.responseText;
       var position
 //      console.log(text)
       if (text !== ''){
         position = JSON.parse(text)
-//        console.log(obj)
+                console.log(position)
+                console.log(position.lat + " " + position.lon)
 
       }
       // var positions = JSON.parse(text)

@@ -59,7 +59,7 @@ function error(err) {
 
 function geoFindMe() {
   topoutput = document.getElementById("out");
-  console.log("hello");
+  console.log("geoFindMe running");
 
   if (!navigator.geolocation){
     topoutput.innerHTML = "<p>Geolocation is not supported by your browser</p>";
