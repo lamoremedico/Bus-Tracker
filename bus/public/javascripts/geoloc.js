@@ -54,7 +54,7 @@ function success(position) {
 
 function error(err) {
   console.log(err);
-  output.innerHTML = "ERROR RETRIEVING LOCATION";
+  topoutput.innerHTML = "ERROR RETRIEVING LOCATION";
 };
 
 function geoFindMe() {
