@@ -1,26 +1,39 @@
 function startUpdater(){
   setInterval(function(){
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "http://" + window.location.hostname + ":3001/info", true);
+    xhttp.open("GET", window.location.origin + "/get_bus22_position", true);
     xhttp.send();
 
-  /*  setTimeout(function(){
+    setTimeout(function(){
       var text = xhttp.responseText;
-      var point = JSON.parse(text)
+      var position
+//      console.log(text)
+      if (text !== ''){
+        position = JSON.parse(text)
+//        console.log(obj)
 
-      var lat = point[1];
-      var lon = point[0];
-      console.log(lat);
-      console.log(lon);
-      document.getElementById('bus_22_info').innerHTML = 'lat: ' + lat + ' - lon: ' + lon;
+      }
+      // var positions = JSON.parse(text)
+      //
+      // console.log(positions)
+      // var lat = point[1];
+      // var lon = point[0];
+      // console.log(lat);
+      // console.log(lon);
+      // document.getElementById('bus_22_info').innerHTML = 'lat: ' + lat + ' - lon: ' + lon;
+      //
+      // initMap(lat, lon)
 
-      initMap(lat, lon)
-    },10) */
-  var lat = 40.047258
-  var lon = -83.077615
-  document.getElementById('bus_22_info').innerHTML = '<p>The Bus is currently at a latitude of ' + lat + '˚ and a longitude of ' + lon + '˚.<br>It will arrive at the next stop, 2415 Sandover Rd, in approximately 3 minutes</p>';
-  //This is currently a placeholder ^ for variables that will later display any needed address
-  initMap(lat, lon) 
+
+       document.getElementById('bus_22_info').innerHTML = '<p>The Bus is currently at a latitude of ' + position.lat + '˚ and a longitude of ' + position.lon + '˚.<br>It will arrive at the next stop, 2415 Sandover Rd, in approximately 3 minutes</p>';
+        //This is currently a placeholder ^ for variables that will later display any needed address
+      //  initMap(lat, lon)
+
+    },10)
+
+
+  // var lat = 40.047258
+  // var lon = -83.077615
   },10000)
 }
 
@@ -104,7 +117,7 @@ var bus27Route = new google.maps.KmlLayer({
    // var kmlLayer = new google.maps.KmlLayer(kmlUrl, map);
 
   //Creates marker when clicked by user - NEED TO adjust to allow
-    //click if marker is on route and then show distance/time til point 
+    //click if marker is on route and then show distance/time til point
   map.addListener('click', function(e) {
   var marker = new google.maps.Marker({
     position: {lat: e.latLng.lat(), lng: e.latLng.lng()},

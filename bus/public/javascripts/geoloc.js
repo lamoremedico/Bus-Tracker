@@ -84,7 +84,7 @@ function geoFindMe() {
 
 function sendCoordinates(lat, lon){
   var xhttp = new XMLHttpRequest();
-  xhttp.open("POST", "http://" + window.location.hostname + "/driver/save_position", true);
+  xhttp.open("POST", window.location.origin + "/driver/save_position", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send('lat=' + lat + '&lon=' + lon);
 }

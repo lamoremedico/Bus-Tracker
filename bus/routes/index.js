@@ -4,9 +4,16 @@ var router = express.Router();
 var cookieParser = require('cookie-parser')
 
 var app = express()
-
 app.use(cookieParser())
 
+//var positions = []
+var position = {}
+
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -104,7 +111,21 @@ router.post('/driver', function(req, res, next) {
 });
 
 router.post('/driver/save_position',function(req, res, next){
-  console.log(req)
+  var data = req.body
+  data['date'] = new Date()
+
+  position = data
+  // if (positions.length === 5){
+  //   positions.pop()
+  // }
+  // positions.unshift(data)
+//  console.log(positions)
+  res.send('saved')
+})
+
+router.get('/get_bus22_position',function(req, res, next){
+  //console.log(positions)
+  res.send(position)
 })
 
 
