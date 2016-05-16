@@ -1,10 +1,25 @@
 //Geo Location for busdriver page
+var busroutejson = '/data/Bus22RouteJSON';
+console.log(busroutejson)
+
+//var busStops = JSON.parse(busroutejson)
+//console.log(busStops)
+
+var stops = [
+  {address: "4565 Lanercost Way" , lat: "83", lon: "56"},
+  {},
+  {},
+  {}
+]; //To be filled with all stops
+
+
+
 
 var timerId = "";
 var topoutput = document.getElementById("out");
 console.log("GEOLOC Running");
-geoFindMe();
-startLocating();
+geoFindMe(); //runs initial tracking to start off without delay
+startLocating(); //runs tracking geoFindMe() every 5 seconds after delay
 
 function startLocating() {
   timerId = setInterval(geoFindMe, 5000);
@@ -16,7 +31,6 @@ function stopLocating() {
   topoutput.innerHTML = "<p>Tracking stopped. To resume please click below</p>"
 
 }
-
 
 
 function success(position) {

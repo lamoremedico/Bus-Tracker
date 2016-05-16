@@ -1,3 +1,11 @@
+var stops = [
+  {address: "4565 Lanercost Way" , lat: 83.007932, lon: 40.052394},
+  {},
+  {},
+  {}
+]; //To be filled with all stops
+
+
 function startUpdater(){
   setInterval(function(){
     var xhttp = new XMLHttpRequest();
@@ -8,12 +16,12 @@ function startUpdater(){
 
     setTimeout(function(){
       var text = xhttp.responseText;
-      var position
+      var busposition
 //      console.log(text)
       if (text !== ''){
-        position = JSON.parse(text)
-                console.log(position)
-                console.log(position.lat + " " + position.lon)
+        busposition = JSON.parse(text)
+//                console.log(position)
+//                console.log(position.lat + " " + position.lon)
 
       }
       // var positions = JSON.parse(text)
@@ -28,22 +36,93 @@ function startUpdater(){
       // initMap(lat, lon)
 
 
-       document.getElementById('bus_22_info').innerHTML = '<p>The Bus is currently at a latitude of ' + position.lat + '˚ and a longitude of ' + position.lon + '˚.<br>It will arrive at the next stop, 2415 Sandover Rd, in approximately 3 minutes</p>';
+        document.getElementById('bus_22_info').innerHTML = '<p>The Bus is currently at a latitude of ' + busposition.lat + '˚ and a longitude of ' + busposition.lon + '˚.<br>It will arrive at the next stop, 2415 Sandover Rd, in approximately 3 minutes</p>';
         //This is currently a placeholder ^ for variables that will later display any needed address
-      //  initMap(lat, lon)
+        initMap(busposition.lat, busposition.lon)
+        getETA(busposition, stops[0])
 
     },10)
 
-
-  // var lat = 40.047258
-  // var lon = -83.077615
   },10000)
 }
 
-function getETA(point){
 
+
+function getETA(busloc, point2){
+
+
+  var origin = new google.maps.LatLng(busloc.lat, busloc.lon);
+  var destination = new google.maps.LatLng(point2.lat, point2.lon);
+  //var origin = new google.maps.LatLng(40.4320203, 83.4059503);
+  //var destination = new google.maps.LatLng(40.39204, 83.029102);
+  
+  var service = new google.maps.DistanceMatrixService();
+  console.log(origin + " " + destination);
+  
+    //Beginning of Google Code
+    service.getDistanceMatrix(
+      {
+        origins: [origin],
+        destinations: [destination],
+        travelMode: google.maps.TravelMode.DRIVING,
+        avoidHighways: false,
+        avoidTolls: false
+      }, 
+      callback);
+  }
+
+
+  function callback(response, status) {
+    if (status != google.maps.DistanceMatrixStatus.OK) {
+      alert('Error was: ' + status);
+    } else {
+      var origins = response.originAddresses;
+      var destinations = response.destinationAddresses;
+      var outputDiv = document.getElementById('outputDiv');
+      outputDiv.innerHTML = '';
+
+      for (var i = 0; i < origins.length; i++) {
+        var results = response.rows[i].elements;
+        console.log(results.distance)
+        for (var j = 0; j < results.length; j++) {
+          outputDiv.innerHTML += origins[i] + " to " + destinations[j]
+              + ": " + results[j].distance + " in "
+              + results[j].duration + "<br />"; //UNDEF results distance and duration both UNDEFINED???
+        console.log(results[j].distance + " in "
+              + results[j].duration);
+        }
+      }
+    }
+  }
+
+    //GOOGLE CODE STOPS HERE
+/*
+  service.getDistanceMatrix(
+      {
+          origins: [origin],
+          destinations: [destination],
+          travelMode: google.maps.TravelMode.DRIVING,
+         avoidHighways: false,
+          avoidTolls: false
+      }, 
+      callback
+  );
+
+  function callback(response, status) {
+      var orig = document.getElementById("orig"),
+          dest = document.getElementById("dest"),
+         dist = document.getElementById("dist");
+
+     if(status=="OK") {
+         orig.innerHTML = "Next Bus Stop Coordinates: " + response.destinationAddresses[0];
+         dest.innerHTML = "Bus Current Location: " + response.originAddresses[0];
+         dist.innerHTML = response.rows[0].elements[0].distance.text;
+     } else {
+         alert("Error: " + status);
+      }
+  }
 }
-
+*/
 
 function initMap(lat, lng) {
   var myLatLng = {lat: lat, lng: lng};
@@ -109,15 +188,6 @@ var bus27Route = new google.maps.KmlLayer({
     sidediv.innerHTML = text;
   }
 
-  // A kml layer needs 2 things - a kml file and a set of options
-    // I selected a random kml file - but since I did not give a location for the
-    // map in map options - the kml file better do this
-
-    //var kmlUrl = 'https://www.google.com/maps/d/edit?mid=z6sSANoSrkWg.kSQOiF5m2sig';
-   //var kmlOptions = { map: map};
-
-    // Create the kmlLayer - and you are done
-   // var kmlLayer = new google.maps.KmlLayer(kmlUrl, map);
 
   //Creates marker when clicked by user - NEED TO adjust to allow
     //click if marker is on route and then show distance/time til point

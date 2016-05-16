@@ -16,6 +16,7 @@ html
 			}
 			#bus_22_info {
 				line-height: 20px;
+				margin: -5px 0px 15px 0px;
 			}
 			#bus_22_map {
 				border: 5px solid black;
@@ -24,16 +25,23 @@ html
 				width: 760px;
 				border: 10px ridge black;
 			}
+			h2 {
+				margin: 20px 0px 20px 0px;
+			}
 	body
 	#logo
 		img(src='/images/UAheader.gif')
 	h2 Bus Tracking for Greensview Elementary Bus #22
 	
+	h3 Bus Current Location and ETA:
+	div(id="bus_22_info") Loading...
+	#outputDiv Next Bus Stop Coordinates: Loading...
+	#dest Bus Current Location: Loading...
+	#dist Estimated Time of Arrival: Loading...
 	
 	div(id="bus_22_map" style="height: 400px; width: 500px;")
 	
-	h3 Bus Current Location and ETA:
-	div(id="bus_22_info")
+	
 
 	script(type="text/javascript" src="/static/js/route_watch.js")
 
